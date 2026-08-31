@@ -39,7 +39,18 @@ export class DepartmentService {
     return this.departmentRepository.save(department);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} department`;
+  async remove(id: number) {
+    const department = await this.departmentRepository.findOne({
+      where: { id: id }
+    });
+
+
+    if(!department){
+      throw new NotFoundException(`this department with id => ${id} not found `);
+    }
+   
+    // this.departmentRepository.delete(id);
+    return this.departmentRepository.remove(department);
+    
   }
 }
