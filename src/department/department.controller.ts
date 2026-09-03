@@ -27,11 +27,13 @@ export class DepartmentController {
   }
 
   @Patch(':id')
+  @ResponseMessage('Department updated successfully')
   update(@Param('id') id: string, @Body() updateDepartmentDto: UpdateDepartmentDto) {
     return this.departmentService.update(+id, updateDepartmentDto);
   }
 
   @Delete(':id')
+  @ResponseMessage('Department deleted successfully')
   remove(@Param('id') id: string) {
     return this.departmentService.remove(+id);
   }

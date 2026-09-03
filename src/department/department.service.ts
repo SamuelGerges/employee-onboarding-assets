@@ -49,7 +49,7 @@ export class DepartmentService {
       throw new NotFoundException(`this department with id => ${id} not found `);
     }
    
-    // this.departmentRepository.delete(id);
+    // this.departmentRepository.delete(id); // => 
     return this.departmentRepository.remove(department);
     
   }

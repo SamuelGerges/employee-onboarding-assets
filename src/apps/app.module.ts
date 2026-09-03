@@ -5,6 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import databaseConfig from '../config/database.config';
 import { DepartmentModule } from '../department/department.module';
+import { PostionModule } from '../postion/postion.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { DepartmentModule } from '../department/department.module';
         configService.getOrThrow<TypeOrmModuleOptions>('database'),
     }),
     DepartmentModule,
+    PostionModule
   ],
   controllers: [AppController],
   providers: [AppService],
