@@ -6,6 +6,8 @@ import { AppService } from './app.service';
 import databaseConfig from '../config/database.config';
 import { DepartmentModule } from '../department/department.module';
 import { PostionModule } from '../postion/postion.module';
+import { AssetTypeModule } from '../asset-type/asset-type.module';
+import { AssetModule } from '../asset/asset.module';
 
 @Module({
   imports: [
@@ -18,8 +20,7 @@ import { PostionModule } from '../postion/postion.module';
       useFactory: (configService: ConfigService) =>
         configService.getOrThrow<TypeOrmModuleOptions>('database'),
     }),
-    DepartmentModule,
-    PostionModule
+    DepartmentModule, PostionModule, AssetTypeModule, AssetModule
   ],
   controllers: [AppController],
   providers: [AppService],
