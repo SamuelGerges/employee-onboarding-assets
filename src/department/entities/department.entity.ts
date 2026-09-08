@@ -1,6 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 // import type { LocalizedName } from '../../common/localized-name.type';
 import { Postion } from '../../postion/entities/postion.entity';
+import { User } from '../../user/entities/user.entity';
 @Entity('departments')
 export class Department {
   @PrimaryGeneratedColumn()
@@ -19,4 +20,6 @@ export class Department {
   @OneToMany(type => Postion, postion => postion.department, { cascade: true })
   postions: Postion[];
 
+  @OneToMany(type => User, user => user.department)
+  users: User[];
 }

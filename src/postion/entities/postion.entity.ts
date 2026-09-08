@@ -1,6 +1,7 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 // import type { LocalizedName } from '../../common/localized-name.type';
 import { Department } from '../../department/entities/department.entity';
+import { User } from '../../user/entities/user.entity';
 
 
 
@@ -28,6 +29,10 @@ export class Postion {
   
   @UpdateDateColumn({ type: 'timestamp', default: null })
   updatedAt: Date;
+
+
+  @OneToMany(type => User, user => user.position)
+  users: User[];
 
 
 }
