@@ -1,9 +1,10 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, Unique, UpdateDateColumn } from "typeorm";
 import { Department } from "../../department/entities/department.entity";
-import { Postion } from "../../postion/entities/postion.entity";
+import { Position } from "../../position/entities/position.entity";
 import { UserRoleEnum } from "../../common/enums/user-roles.enum";
 
 @Entity('users')
+// @Unique(['email'])
 export class User {
 
   @PrimaryGeneratedColumn()
@@ -25,7 +26,7 @@ export class User {
   @Column({ type: 'enum', enum: UserRoleEnum, default: UserRoleEnum.EMPLOYEE })
   role: UserRoleEnum;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: null })
   manager_id: number | null;
 
   @Column({ type: 'int' })
@@ -34,7 +35,7 @@ export class User {
   @Column({ type: 'int' })
   position_id: number;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', default: null })
   is_active: boolean;
 
 
@@ -49,9 +50,9 @@ export class User {
   department: Department;
 
 
-  @ManyToOne(type => Postion, position => position.users)
+  @ManyToOne(type => Position, position => position.users)
   @JoinColumn({ name: 'position_id' })
-  position: Postion;
+  position: Position;
 
 
   @OneToMany(type => User, user => user.manager)

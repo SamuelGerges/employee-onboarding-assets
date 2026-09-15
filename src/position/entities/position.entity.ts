@@ -6,8 +6,8 @@ import { User } from '../../user/entities/user.entity';
 
 
 
-@Entity('postions')
-export class Postion {
+@Entity('positions')
+export class Position {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -17,7 +17,7 @@ export class Postion {
   @Column({ type: 'int' })
   department_id: number;
 
-  @ManyToOne(type => Department, department => department.postions, { onDelete: 'CASCADE' })
+  @ManyToOne(type => Department, department => department.positions, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'department_id' })
   department: Department;
 

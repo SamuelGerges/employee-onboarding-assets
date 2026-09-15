@@ -1,6 +1,6 @@
 import { IsBoolean, IsInt, IsNotEmpty, IsOptional, IsPositive, IsString, MaxLength } from "class-validator";
 
-export class CreatePostionDto {
+export class CreatePositionDto {
 
   @IsString()
   @IsNotEmpty()
